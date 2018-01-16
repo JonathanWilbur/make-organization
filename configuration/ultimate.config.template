@@ -1,0 +1,68 @@
+#
+# The configuration for the Ultimate Certificate Authority
+# By Jonathan M. Wilbur
+# 15 January 2018
+#
+# The certificate authority configured here should only be used to create
+# certificate authorities beneath it. It should not be used to sign client
+# or server certificates directly.
+#
+
+[ ca ]
+default_ca          = ca_defaults
+
+[ ca_defaults ]
+dir                 = .
+crl_dir             = $dir/output/ultimateULTIMATE_SERIAL/public/crls
+new_certs_dir       = $dir/output/certs
+database            = $dir/output/ultimateULTIMATE_SERIAL/private/database.db
+serial              = $dir/output/ultimateULTIMATE_SERIAL/private/serial
+crlnumber           = $dir/output/ultimateULTIMATE_SERIAL/private/crlnumber
+RANDFILE            = $dir/output/ultimateULTIMATE_SERIAL/private/.rand
+private_key         = $dir/output/ultimateULTIMATE_SERIAL/private/keys/ultimateULTIMATE_SERIAL.key.pem
+certificate         = $dir/output/ultimateULTIMATE_SERIAL/public/certs/ultimateULTIMATE_SERIAL.cert.pem
+crl                 = $dir/output/ultimateULTIMATE_SERIAL/public/certs/ultimateULTIMATE_SERIAL.crl.pem
+crl_extensions      = crl_ext
+default_crl_days    = 30
+default_md          = sha256
+name_opt            = ca_default
+cert_opt            = ca_default
+default_days        = 7300
+preserve            = no
+policy              = policy
+
+[ policy ]
+countryName             = optional
+stateOrProvinceName     = optional
+organizationName        = match
+organizationalUnitName  = optional
+commonName              = supplied
+emailAddress            = optional
+
+[ crl_ext ]
+authorityKeyIdentifier  = keyid:always
+
+[ ultimate ]
+subjectKeyIdentifier    = hash
+basicConstraints        = critical, CA:true
+keyUsage                = critical, digitalSignature, cRLSign, keyCertSign
+
+[ penultimate ]
+subjectKeyIdentifier    = hash
+basicConstraints        = critical, CA:true, pathlen:0
+keyUsage                = critical, digitalSignature, cRLSign, keyCertSign
+PENULTIMATE_CRL_CONFIG
+
+[ req ]
+dir                 = PWD
+oid_file            = $dir/oids
+default_bits        = 2048
+distinguished_name  = req_distinguished_name
+string_mask         = utf8only
+default_md          = sha256
+utf8                = yes
+prompt              = no
+
+[ req_distinguished_name ]
+organizationName                = ORGANIZATION_NAME
+commonName                      = Ultimate Certificate Authority ULTIMATE_SERIAL

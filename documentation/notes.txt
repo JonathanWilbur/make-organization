@@ -1,0 +1,18 @@
+# Create PEM certificate (.cert.pem)
+# Create PEM certificate chain (.chain.pem)
+# Create PEM key (.key.pem)
+# Create PEM key (.key)
+# Create DER certificate (.cer, .crt, .der)
+# Create PKCS7 Certificate (.p7b, .p7r, .spc)
+# Create PKCS7 Certificate Chain (.chain.p7b, .chain.p7r, .chain.spc)
+# Create PCKS12 Certificate (.cert.pfx, .cert.p12)
+# Create PCKS12 Certificate (.key.pfx, .key.p12)
+# Create PCKS12 Certificate+Key Pair (.pair.pfx, .pair.p12)
+# Distribute CRL (.crl)
+
+Chain
+GPG Keys
+Input verification
+CRLs
+Set serial file to ULTIMATE_SERIAL or PENULTIMATE_SERIAL
+clean.sh
